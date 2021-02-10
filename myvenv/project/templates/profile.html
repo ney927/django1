@@ -1,12 +1,18 @@
-<h1>{{request.user}}'s Pins</h1>
-{{request.user.id}}
-{%for Pins in pins%}
+{%for Profile in profiles%}
 
-  {%if request.user.id == Pins.prof.user.id %}
-  <p><a href="{{Pins.pin.url}}">{{Pins.pin}}</a></p>
-  {%endif%}
+  <h1>{{Profile.user}}'s Pins</h1>
+  {{Profile.user.id}}
 
-  <p>{{Pins.prof.user.id}} -- {{Pins.pin}}</p>
+  {%for Pins in pins%}
+
+    {%if Profile.user.id == Pins.prof.user.id %}
+    <p><a href="{{Pins.pin.url}}">{{Pins.pin}}</a></p>
+    {%endif%}
+
+    
 
 
+  {%endfor%}
 {%endfor%}
+
+<h2><a href="{%url 'files'%}">files</a></h2>

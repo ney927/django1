@@ -4,18 +4,24 @@ from Files.models import File
 
 def profile_view(request):
   pins = Pins.objects.all()
+  profs = Profile.objects.all()
   context = {
-    'pins': pins
+    'pins': pins,
+    'profiles': profs
   }
   return render(request, 'profile.html', context)
 
 def pin_item_view(request, id):
   f = File.objects.get(id=id)
   u = Profile.objects.get(user = request.user)
-  # allPins = Pins.objects.filter(prof=u, pin=f.file)
-  p = Pins(prof=u, pin=f.file)
-  p.save()
+  allPins = Pins.objects.filter(prof=u, pin=f.file)
+  if not allPins.exists():
+    p = Pins(prof=u, pin=f.file)
+    p.save()
+  else:
+    print("DUPLICATE, NOT SAVED")
+    print(allPins)
   context = {
     'file': f
   }
-  return render(request, 'profile.html', context)
+  return render(request, 'pin_item.html', context)

@@ -8,5 +8,8 @@ def files_view(request):
   }
   return render(request, 'files.html', context)
 
+def delete_file_view(request, id):
+  fil
+
 
 
