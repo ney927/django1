@@ -14,9 +14,9 @@ def profile_view(request):
 def pin_item_view(request, id):
   f = File.objects.get(id=id)
   u = Profile.objects.get(user = request.user)
-  allPins = Pins.objects.filter(prof=u, pin=f.file)
+  allPins = Pins.objects.filter(prof=u, pin=f)
   if not allPins.exists():
-    p = Pins(prof=u, pin=f.file)
+    p = Pins(prof=u, pin=f)
     p.save()
   else:
     print("DUPLICATE, NOT SAVED")
