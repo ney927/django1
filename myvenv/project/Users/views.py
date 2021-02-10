@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from .models import Profile, Pins
 
-# Create your views here.
+def profile_view(request):
+  pins = Pins.objects.all()
+  context = {
+    'pins': pins
+  }
+  return render(request, 'profile.html', context)

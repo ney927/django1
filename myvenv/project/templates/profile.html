@@ -1,0 +1,10 @@
+<h1>Pins</h1>
+{%for Pins in pins%}
+
+  {%if request.user.id == Pins.prof.user.id %}
+  <p>{{request.user}} --  {{Pins.pin}}</p>
+  {%endif%}
+
+
+
+{%endfor%}
