@@ -7,3 +7,6 @@ def files_view(request):
     'files': files
   }
   return render(request, 'files.html', context)
+
+
+

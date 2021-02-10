@@ -2,6 +2,7 @@
 
 {%for File in files%}
   <p>
+    <a href="{%url 'pin-item' File.id%}"><img width="20px" src="{% static 'pin.png' %}" alt="pin"/></a>
     <a href="{{File.file.url}}/">{{File.file}}</a>
   </p>
 {%endfor%}

@@ -1,10 +1,12 @@
-<h1>Pins</h1>
+<h1>{{request.user}}'s Pins</h1>
+{{request.user.id}}
 {%for Pins in pins%}
 
   {%if request.user.id == Pins.prof.user.id %}
-  <p>{{request.user}} --  {{Pins.pin}}</p>
+  <p><a href="{{Pins.pin.url}}">{{Pins.pin}}</a></p>
   {%endif%}
 
+  <p>{{Pins.prof.user.id}} -- {{Pins.pin}}</p>
 
 
 {%endfor%}
