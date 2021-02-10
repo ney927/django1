@@ -1,0 +1,7 @@
+{% load static %}
+
+{%for File in files%}
+  <p>
+    <a href="{{File.file.url}}/">{{File.file}}</a>
+  </p>
+{%endfor%}
