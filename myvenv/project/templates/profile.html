@@ -1,7 +1,10 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
 {%for Profile in profiles%}
 
   <h1>{{Profile.user}}'s Pins</h1>
-  {{Profile.user.id}}
 
   {%for Pins in pins%}
 
@@ -17,3 +20,5 @@
 {%endfor%}
 
 <h2><a href="{%url 'files'%}">files</a></h2>
+
+{%endblock%}

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Profile, Pins
 from Files.models import File
+from django.contrib.auth.decorators import login_required
 
 def profile_view(request):
   pins = Pins.objects.all()
@@ -11,6 +12,7 @@ def profile_view(request):
   }
   return render(request, 'profile.html', context)
 
+@login_required
 def pin_item_view(request, id):
   f = File.objects.get(id=id)
   u = Profile.objects.get(user = request.user)
@@ -32,6 +34,7 @@ def pin_item_view(request, id):
   # }
   return render(request, 'profile.html', context)
 
+@login_required
 def delete_pin_view(request, id):
   p = Pins.objects.get(id=id)
   p.delete()
@@ -42,3 +45,6 @@ def delete_pin_view(request, id):
     'profiles': profs
   }
   return render(request, 'profile.html', context)
+
+def home_view(request):
+  return render(request, 'base.html', {})
