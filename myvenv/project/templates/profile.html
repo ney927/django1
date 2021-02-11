@@ -6,13 +6,14 @@
   {%for Pins in pins%}
 
     {%if Profile.user.id == Pins.prof.user.id %}
-    <p><a href="{{Pins.pin.url}}">{{Pins.pin}}</a></p>
+    <p>
+      <a href="{{Pins.pin.url}}">{{Pins.pin.file}}</a>
+      <a href="{%url 'pin-delete' Pins.id%}">remove pin</a>
+    </p>
     {%endif%}
 
-    
-
-
   {%endfor%}
+
 {%endfor%}
 
 <h2><a href="{%url 'files'%}">files</a></h2>

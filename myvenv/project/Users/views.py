@@ -21,7 +21,24 @@ def pin_item_view(request, id):
   else:
     print("DUPLICATE, NOT SAVED")
     print(allPins)
+  pins = Pins.objects.all()
+  profs = Profile.objects.all()
   context = {
-    'file': f
+    'pins': pins,
+    'profiles': profs
   }
-  return render(request, 'pin_item.html', context)
+  # context = {
+  #   'file': f
+  # }
+  return render(request, 'profile.html', context)
+
+def delete_pin_view(request, id):
+  p = Pins.objects.get(id=id)
+  p.delete()
+  pins = Pins.objects.all()
+  profs = Profile.objects.all()
+  context = {
+    'pins': pins,
+    'profiles': profs
+  }
+  return render(request, 'profile.html', context)
